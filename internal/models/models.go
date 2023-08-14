@@ -8,10 +8,11 @@ import (
 type User struct {
 	ID        uint   `gorm:"primary_key"`
 	Username  string `json:"username"`
+	Login     string `json:"login"`
 	Password  string `json:"password"`
 	CreatedAt time.Time
-	UpdatedAt time.Time
-	DeletedAt time.Time
+	UpdatedAt *time.Time
+	DeletedAt *time.Time
 }
 
 type Note struct {
@@ -20,6 +21,6 @@ type Note struct {
 	Content   string `json:"content"`
 	UserID    uint   `json:"userID"`
 	CreatedAt time.Time
-	UpdatedAt time.Time
-	DeletedAt time.Time
+	UpdatedAt *time.Time
+	DeletedAt *time.Time
 }

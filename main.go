@@ -1,8 +1,8 @@
 package main
 
 import (
-	"Web-service/handler"
-	"Web-service/models"
+	"Web-service/internal/handler"
+	"Web-service/internal/models"
 	"github.com/jinzhu/gorm"
 )
 

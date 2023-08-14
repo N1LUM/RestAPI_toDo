@@ -1,6 +1,8 @@
 package handler
 
 import (
+	"Web-service/internal/repository"
+	"Web-service/internal/service"
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
 )
@@ -14,6 +16,9 @@ func hello(c *gin.Context) {
 // handler
 func SetupRouter(db *gorm.DB) *gin.Engine {
 	router := gin.Default()
+
+	repository := repository.NewRepository(db)
+	service := service.NewService(repository)
 
 	main := router.Group("/")
 	{
@@ -31,7 +36,7 @@ func SetupRouter(db *gorm.DB) *gin.Engine {
 
 	join := router.Group("/join")
 	{
-		join.POST("/register")
+		join.POST("/register", service.RegisterUser)
 		join.POST("/login")
 		join.POST("/post")
 	}
